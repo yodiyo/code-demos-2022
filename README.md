@@ -1,6 +1,5 @@
-# code-demos
-Demos of work done
+# Demos
 
-## Build script for custom theme and plugins
-## Capture data from multiple APIs and output to Google Sheet
+### Build script for custom theme and plugins
+### Capture data from multiple APIs and output to Google Sheet
 

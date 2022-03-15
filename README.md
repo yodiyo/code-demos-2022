@@ -13,3 +13,6 @@ Various functions to customise WooCommerce pages
 - reorder components on Product Display Pages
 - change text elements
 - change breadcrumbs
+
+### [Index - Reverse name function](https://github.com/yodiyo/code-demos/tree/main/artist-function-reverse-name.php)
+Function to enable indexing of artists that included names with surname first

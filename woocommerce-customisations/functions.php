@@ -26,7 +26,7 @@ add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_p
  * @return string $price.
  */
 
-function ov_variable_product_price_starting_from( $price, $product ) {
+function yb_variable_product_price_starting_from( $price, $product ) {
 
 	if ( $product->is_type( 'simple' ) ) {
 		return $price;
@@ -48,7 +48,7 @@ function ov_variable_product_price_starting_from( $price, $product ) {
 
 	return $price;
 }
-add_filter( 'woocommerce_get_price_html', 'ov_variable_product_price_starting_from', 10, 2 );
+add_filter( 'woocommerce_get_price_html', 'yb_variable_product_price_starting_from', 10, 2 );
 
 
 /**
@@ -66,10 +66,10 @@ add_action( 'woocommerce_single_product_summary', 'woocommerce_upsell_display', 
  * @return string
  */
 
-function ov_translate_may_also_like() {
+function yb_translate_may_also_like() {
 	return 'Add Options';
 }
-add_filter( 'woocommerce_product_upsells_products_heading', 'ov_translate_may_also_like' );
+add_filter( 'woocommerce_product_upsells_products_heading', 'yb_translate_may_also_like' );
 
 
 /**
@@ -102,7 +102,7 @@ add_filter( 'woocommerce_loop_add_to_cart_link', 'quantity_inputs_for_woocommerc
  * @return string
  */
 
-function ov_product_reviews_shortcode( $atts ) {
+function yb_product_reviews_shortcode( $atts ) {
 
 	if ( empty( $atts ) ) {
 		return '';
@@ -124,7 +124,7 @@ function ov_product_reviews_shortcode( $atts ) {
 	}
 
 }
-add_shortcode( 'product_reviews', 'ov_product_reviews_shortcode' );
+add_shortcode( 'product_reviews', 'yb_product_reviews_shortcode' );
 
 
 /**
@@ -233,7 +233,7 @@ function woo_documentation_products_tab_content() {
 	$prod_id   = get_the_ID();
 	$documents = get_field( 'documentation', $prod_id );
 	?>
-	<ul class="ov-list-documents fa-ul">
+	<ul class="yb-list-documents fa-ul">
 	<?php
 	foreach ( $documents as $document ) {
 		?>
@@ -312,7 +312,7 @@ remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_r
  * Replace above with cross-sells products.
  */
 
-function ov_add_cross_sells() {
+function yb_add_cross_sells() {
 
 	$crosssell_ids = get_post_meta( get_the_ID(), '_crosssell_ids' );
 	$crosssell_ids = $crosssell_ids[0];
@@ -353,7 +353,7 @@ function ov_add_cross_sells() {
 
 }
 
-add_action( 'woocommerce_after_single_product_summary', 'ov_add_cross_sells', 20 );
+add_action( 'woocommerce_after_single_product_summary', 'yb_add_cross_sells', 20 );
 
 
 /* ---- Checkout - Add Liftgate option ---- */
@@ -362,16 +362,16 @@ add_action( 'woocommerce_after_single_product_summary', 'ov_add_cross_sells', 20
  * Add custom field to the checkout page.
  */
 
-function ov_custom_checkout_field( $checkout ) {
+function yb_custom_checkout_field( $checkout ) {
 
-	echo '<div id="ov_custom_checkout_field">';
+	echo '<div id="yb_custom_checkout_field">';
 
 	woocommerce_form_field(
 		'checkout_checkbox_liftgate',
 		[
 			'type'        => 'checkbox',
 			'class'       => [
-				'ov-checkout-checkbox form-row',
+				'yb-checkout-checkbox form-row',
 			],
 			'label_class' => ['woocommerce-form__label woocommerce-form__label-for-checkbox checkbox'],
 			'input_class' => ['woocommerce-form__input woocommerce-form__input-checkbox input-checkbox'],
@@ -382,30 +382,30 @@ function ov_custom_checkout_field( $checkout ) {
 
 	echo '</div>';
 }
-add_action( 'woocommerce_after_order_notes', 'ov_custom_checkout_field' );
+add_action( 'woocommerce_after_order_notes', 'yb_custom_checkout_field' );
 
 /**
  * Update the value given in custom field.
  */
 
-function ov_custom_checkout_field_update_order_meta( $order_id ) {
+function yb_custom_checkout_field_update_order_meta( $order_id ) {
 
 	if ( ! empty( $_POST['checkout_checkbox_liftgate'] ) ) {
 		update_post_meta( $order_id, 'checkout_checkbox_liftgate', sanitize_text_field( $_POST['checkout_checkbox_liftgate'] ) );
 	}
 
 }
-add_action( 'woocommerce_checkout_update_order_meta', 'ov_custom_checkout_field_update_order_meta' );
+add_action( 'woocommerce_checkout_update_order_meta', 'yb_custom_checkout_field_update_order_meta' );
 
 /**
  * Display field value on the backend WooCommerce order and emails.
  */
 
-function ov_checkout_field_display_order_meta( $order ) {
+function yb_checkout_field_display_order_meta( $order ) {
 	$meta_liftgate = get_post_meta( $order->get_id(), 'checkout_checkbox_liftgate', true );
 	$meta_liftgate = ( $meta_liftgate ) ? 'Yes' : 'No';
 	echo '<p>' . esc_html( 'Liftgate needed' ) . ': ' . esc_html( $meta_liftgate ) . '<p>';
 }
-add_action( 'woocommerce_order_details_after_order_table', 'ov_checkout_field_display_order_meta', 10, 1 );
-add_action( 'woocommerce_admin_order_data_after_billing_address', 'ov_checkout_field_display_order_meta', 10, 1 );
-add_action( 'woocommerce_email_after_order_table', 'ov_checkout_field_display_order_meta', 10, 1 );
+add_action( 'woocommerce_order_details_after_order_table', 'yb_checkout_field_display_order_meta', 10, 1 );
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'yb_checkout_field_display_order_meta', 10, 1 );
+add_action( 'woocommerce_email_after_order_table', 'yb_checkout_field_display_order_meta', 10, 1 );

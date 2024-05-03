@@ -1,19 +1,19 @@
 /**
  * Google Script
  *
- * Capture data from Sage Boomerang API and output to Google Sheet
+ * Capture data from API and output to Google Sheet
  *
  * @package    boomerang_api
  *
- * @link      https://docs.google.com/spreadsheets/d/1W18hqVfqGfD_FNSyntbap98rzBxlcUunv7gsF1QFJUw
+ * @link      https://docs.google.com/spreadsheets/[LINK]
  *
- * @author     Yorick Brown <yorick@pragmatic.agency>
+ * @author     Yorick Brown
  */
 
 
 function callBoomerageAPIDev() {
   
-  const siteUrl = "https://1741422f3af4.ngrok.io",
+  const siteUrl = "https://example.com",
       apiEndpoint = "api/v1/totals?key=35328fcd1b8cf9e101fc0e398de0be08";
   
   const ui = SpreadsheetApp.getUi();

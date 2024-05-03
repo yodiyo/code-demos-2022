@@ -6,7 +6,7 @@
  *
  * @package    boomerang_api
  * @subpackage boomerang_api/includes
- * @link       https://www.sage.com/en-us/blog/api/v1
+ * @link       https://www.example.com/en-us/blog/api/v1
  * @since      0.1
  * @author     Yorick Brown
  */
@@ -127,7 +127,7 @@ class Boomerang_API_Custom_Endpoint {
 	 * The response includes counts for blog posts, amp posts, pages, glossary posts, categories, tags, custom taxonomies, and authors, and further granular counts and details for posts, taxonomies and authors.
 	 *
 	 * @apiExample {http} Overview:
-	 * https://www.sage.com/en-us/blog/api/v1/totals?key=35328fcd1b8cf9e101fc0e398de0be08
+	 * https://www.example.com/en-us/blog/api/v1/totals?key=35328fcd1b8cf9e101fc0e398de0be08
 	 *
 	 * @apiSuccess {Object} totals an array of all public sites in network and an array of counts for blog posts, pages, glossary posts, categories, tags, custom taxonomies, and authors, plus the total of all pages generated from these.
 	 *
@@ -152,7 +152,7 @@ class Boomerang_API_Custom_Endpoint {
 	 * }
 	 *
 	 * @apiExample {http} Example usage - query taxonomy-data -  granular data:
-	 * https://www.sage.com/en-us/blog/api/v1/totals?key=35328fcd1b8cf9e101fc0e398de0be08&query=taxonomy-data
+	 * https://www.example.com/en-us/blog/api/v1/totals?key=35328fcd1b8cf9e101fc0e398de0be08&query=taxonomy-data
 	 *
 	 * @apiSuccess {Object} taxonomy granular counts and details for taxonomies and authors.
 	 *
@@ -162,7 +162,7 @@ class Boomerang_API_Custom_Endpoint {
 	 *   "categories": [
 	 *       {
 	 *           "ID": 33,
-	 *           "category": "Business planning",
+	 *           "category": "Business type",
 	 *           "count": 11
 	 *       },
 	 *       {
@@ -179,7 +179,7 @@ class Boomerang_API_Custom_Endpoint {
 	 *      },
 	 *      {
 	 *          "ID": 18,
-	 *          "tag": "Alternative finance",
+	 *          "tag": "Finance",
 	 *          "count": 31
 	 *      },...
 	 *  ],
@@ -189,7 +189,7 @@ class Boomerang_API_Custom_Endpoint {
 	 *          "count": 563
 	 *      },
 	 *      {
-	 *          "name": "Medium businesses",
+	 *          "name": "Large businesses",
 	 *          "count": 402
 	 *      },
 	 *      {
@@ -199,28 +199,28 @@ class Boomerang_API_Custom_Endpoint {
 	 *  ],
 	 *  "industries":[
 	 *      {
-	 *          "name": "Chemical",
+	 *          "name": "Retail",
 	 *          "count": 2
 	 *      },
 	 *      {
-	 *          "name": "Construction",
+	 *          "name": "Marketing",
 	 *          "count": 8
 	 *      },...
 	 *  ],
 	 * "authors":[
 	 *      {
-	 *          "name": "Adam Prince",
+	 *          "name": "Adam Brown",
 	 *      "count": "4"
 	 *      },
 	 *      {
-	 *          "name": "Alan Laing",
+	 *          "name": "Fred Sugar",
 	 *          "count": "3"
 	 *      },...
 	 *  ]
 	 * }
 	 *
 	 * @apiExample {http} Example usage - query post details -  granular data:
-	 * https://www.sage.com/en-us/blog/api/v1/totals?key=35328fcd1b8cf9e101fc0e398de0be08&query=post-details
+	 * https://www.example.com/en-us/blog/api/v1/totals?key=35328fcd1b8cf9e101fc0e398de0be08&query=post-details
 	 *
 	 * @apiSuccess {Object} posts, post details - granular counts and details for blog posts and glossary posts
 	 *
@@ -232,28 +232,28 @@ class Boomerang_API_Custom_Endpoint {
 	 *      "ID": 7676,
 	 *      "title": "AO.com: ‘Supply chain tech is essential to cope with coronavirus challenges'",
 	 *      "post type": "post",
-	 *      "url": "https://www.sage.test/en-gb/blog/ao-com-supply-chain-tech-coronavirus-challenges/",
+	 *      "url": "https://www.example.test/en-gb/blog/supply-chain-tech/",
 	 *      "amp status": ""
 	 *    },
 	 *    {
 	 *      "ID": 7671,
 	 *      "title": "Workforce planning: How to effectively manage employee shift patterns",
 	 *      "post type": "post",
-	 *      "url": "https://www.sage.test/en-gb/blog/workforce-planning-manage-shift-patterns/",
+	 *      "url": "https://www.example.test/en-gb/blog/manage-shift-patterns/",
 	 *      "amp status": "disabled"
 	 *    },
 	 *    {
 	 *      "ID": 6621,
 	 *      "title": "What is a payment gateway?",
-	 *      "post type": "sage_glossary",
-	 *      "url": "https://www.sage.test/en-gb/blog/glossary/what-is-a-payment-gateway/",
+	 *      "post type": "example_glossary",
+	 *      "url": "https://www.example.test/en-gb/blog/glossary/what-is-a-payment-gateway/",
 	 *      "amp status": "disabled"
 	 *    },
 	 *    {
 	 *      "ID": 4124,
 	 *      "title": "What is a balance sheet?",
-	 *      "post type": "sage_glossary",
-	 *      "url": "https://www.sage.test/en-gb/blog/glossary/what-is-a-balance-sheet/",
+	 *      "post type": "example_glossary",
+	 *      "url": "https://www.example.test/en-gb/blog/glossary/what-is-a-balance-sheet/",
 	 *      "amp status": ""
 	 *    },...
 	 * @apiUse RestNoRouteError
@@ -264,7 +264,7 @@ class Boomerang_API_Custom_Endpoint {
 		$params = explode( ',', $params['query'] );
 
 		$published_blog_posts     = wp_count_posts()->publish;
-		$published_glossary_posts = wp_count_posts( 'sage_glossary' )->publish;
+		$published_glossary_posts = wp_count_posts( 'example_glossary' )->publish;
 		$published_pages          = wp_count_posts( 'page' )->publish + 2; // add home page and glossary home page.
 
 		$cats           = get_categories();
@@ -293,7 +293,7 @@ class Boomerang_API_Custom_Endpoint {
 
 		// query posts and custom posts.
 		$args = array(
-			'post_type'              => array( 'post', 'sage_glossary' ),
+			'post_type'              => array( 'post', 'example_glossary' ),
 			'posts_per_page'         => -1,
 			'no_found_rows'          => true,
 			'update_post_term_cache' => false,
